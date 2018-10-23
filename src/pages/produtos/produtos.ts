@@ -15,7 +15,7 @@ export class ProdutosPage {
     console.log('ionViewDidLoad ProdutosPage');
   }
 
-  itemSelected() {
+  itemSelected(item) {
     this.navCtrl.push(ProdutoPage);
   }
 
