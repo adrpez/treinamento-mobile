@@ -1,3 +1,11 @@
 page-login {
-
+    ion-content {
+        .logo-item {
+            text-align: center;
+        }
+        .logo-item img {
+            max-width: 200px;
+            text-align: center;
+        }
+    }
 }
