@@ -1,21 +1,23 @@
-<!--
-  Generated template for the ProdutosPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
     <button ion-button menuToggle icon-only>
       <ion-icon name='menu'></ion-icon>
     </button>
     <ion-title>Produtos</ion-title>
   </ion-navbar>
-
 </ion-header>
-
-
 <ion-content padding>
-
+  <ion-list>
+    <button ion-item (click)="itemSelected(item)">
+      <ion-avatar item-start>
+        <img src="../../assets/imgs/logo.png">
+      </ion-avatar>
+      <ion-label>
+        <h2>Óculos 3D Samsung</h2>
+        <h3>Eletrônicos</h3>
+        <p>R$ 1.500,00</p>
+      </ion-label>
+      <ion-icon name="arrow-forward" item-right></ion-icon>
+    </button>
+  </ion-list>
 </ion-content>
