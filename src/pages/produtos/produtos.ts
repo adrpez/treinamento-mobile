@@ -19,4 +19,11 @@ export class ProdutosPage {
     this.navCtrl.push(ProdutoPage);
   }
 
+  doRefresh(refresher){
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+
 }
