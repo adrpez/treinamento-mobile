@@ -11,14 +11,14 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <ion-list>
-    <ion-item (click)="itemSelected(item)">
+    <ion-item *ngFor="let item of produtos" (click)="itemSelected(item)">
       <ion-avatar item-start>
-        <img src="../../assets/imgs/logo.png">
+        <img src="{{item.thumbnail}}">
       </ion-avatar>
       <ion-label>
-        <h2>Óculos 3D Samsung</h2>
-        <h3>Eletrônicos</h3>
-        <p>R$ 1.500,00</p>
+        <h2>{{item.titulo}}</h2>
+        <h3>{{item.categoria.titulo}}</h3>
+        <p>{{item.valorUnitario | currency:'R$'}}</p>
       </ion-label>
       <ion-icon name="ios-arrow-forward" item-end></ion-icon>
     </ion-item>

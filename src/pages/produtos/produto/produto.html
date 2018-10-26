@@ -6,24 +6,24 @@
 
 <ion-content padding>
   <ion-card>
-    <img src="../../../assets/imgs/logo.png"/>
+    <img src="{{produto.foto}}"/>
   </ion-card>
   <ion-list>
     <ion-item>
       <ion-label floating>Título</ion-label>
-      <ion-input type="text" value=""></ion-input>
+      <ion-input type="text" value="{{produto.titulo}}"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Descrição</ion-label>
-      <ion-input type="text" value=""></ion-input>
+      <ion-input type="text" value="{{produto.descricao}}"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Valor Unitário</ion-label>
-      <ion-input type="text" value=""></ion-input>
+      <ion-input type="text" value="{{produto.valorUnitario | currency:'R$'}}"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Estoque Inicial</ion-label>
-      <ion-input type="text" value=""></ion-input>
+      <ion-input type="text" value="{{produto.estoqueInicial}}"></ion-input>
     </ion-item>
   </ion-list>
   <button ion-button full>Gravar</button>

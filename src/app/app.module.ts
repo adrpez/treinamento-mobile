@@ -14,6 +14,8 @@ import { ProdutoPage } from '../pages/produtos/produto/produto';
 import { ProdutosPage } from '../pages/produtos/produtos';
 import { VendaPage } from '../pages/vendas/venda/venda';
 import { VendasPage } from '../pages/vendas/vendas';
+import { ProdutoService } from '../service/ProdutoService';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { VendasPage } from '../pages/vendas/vendas';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -52,7 +55,8 @@ import { VendasPage } from '../pages/vendas/vendas';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ProdutoService
   ]
 })
 export class AppModule {}
