@@ -26,8 +26,9 @@ export class ProdutoPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProdutoPage');
     this.produtoService.detail(this.navParams.get("id"))
-    .subscribe(produto => {
-      this.produto = produto;
+    .subscribe({
+      next: produto => this.produto = produto,
+      error: val => console.log(`Error: ${val}`)
     });
   }
 

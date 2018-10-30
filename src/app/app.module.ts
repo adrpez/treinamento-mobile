@@ -16,6 +16,9 @@ import { VendaPage } from '../pages/vendas/venda/venda';
 import { VendasPage } from '../pages/vendas/vendas';
 import { ProdutoService } from '../service/ProdutoService';
 import { HttpClientModule } from '@angular/common/http';
+import { DatabaseService } from '../service/DatabaseService';
+import { SQLite } from '@ionic-native/sqlite';
+import { SQLiteMock } from '../service/SQLiteMock';
 
 @NgModule({
   declarations: [
@@ -56,7 +59,10 @@ import { HttpClientModule } from '@angular/common/http';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ProdutoService
+    ProdutoService,
+    DatabaseService,
+    SQLite/*,
+    { provide: SQLite, useClass: SQLiteMock }*/
   ]
 })
 export class AppModule {}
