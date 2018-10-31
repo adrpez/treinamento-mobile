@@ -32,7 +32,8 @@ export class MyApp {
       ]);
 
       // Get a FCM token
-      fcm.getToken()
+      let token = fcm.getToken();
+      console.log('FCM Token: ', token);
 
       // Listen to incoming messages
       fcm.listenToNotifications().pipe(
