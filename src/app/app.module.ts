@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { Firebase } from '@ionic-native/firebase';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -18,7 +19,8 @@ import { ProdutoService } from '../service/ProdutoService';
 import { HttpClientModule } from '@angular/common/http';
 import { DatabaseService } from '../service/DatabaseService';
 import { SQLite } from '@ionic-native/sqlite';
-import { SQLiteMock } from '../service/SQLiteMock';
+/*import { SQLiteMock } from '../service/SQLiteMock';*/
+import { FcmProvider } from '../providers/fcm/fcm';
 
 @NgModule({
   declarations: [
@@ -56,13 +58,15 @@ import { SQLiteMock } from '../service/SQLiteMock';
     VendasPage
   ],
   providers: [
+    Firebase,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProdutoService,
     DatabaseService,
-    SQLite/*,
-    { provide: SQLite, useClass: SQLiteMock }*/
+    SQLite,
+    /*{ provide: SQLite, useClass: SQLiteMock }*/
+    FcmProvider
   ]
 })
 export class AppModule {}
