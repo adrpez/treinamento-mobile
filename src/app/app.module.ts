@@ -19,8 +19,9 @@ import { ProdutoService } from '../service/ProdutoService';
 import { HttpClientModule } from '@angular/common/http';
 import { DatabaseService } from '../service/DatabaseService';
 import { SQLite } from '@ionic-native/sqlite';
-/*import { SQLiteMock } from '../service/SQLiteMock';*/
+/**/import { SQLiteMock } from '../service/SQLiteMock';
 import { FcmProvider } from '../providers/fcm/fcm';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 @NgModule({
   declarations: [
@@ -64,9 +65,10 @@ import { FcmProvider } from '../providers/fcm/fcm';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProdutoService,
     DatabaseService,
-    SQLite,
-    /*{ provide: SQLite, useClass: SQLiteMock }*/
-    FcmProvider
+    /*SQLite,*/
+    { provide: SQLite, useClass: SQLiteMock },
+    FcmProvider,
+    BarcodeScanner
   ]
 })
 export class AppModule {}
