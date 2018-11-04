@@ -17,6 +17,10 @@ export class ComprasPage {
 
   itemSelected(item) {
     this.navCtrl.push(CompraPage);
- } 
+  } 
+
+  add() {
+    this.navCtrl.push(CompraPage);
+  }
 
 }
