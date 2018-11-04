@@ -1,0 +1,15 @@
+
+{
+    "PRODUTOS": "Produtos",
+    "PRODUTO": "Produto",
+    "TITULO": "Título",
+    "DESCRICAO": "Descrição",
+    "VALOR_UNITARIO": "Valor Unitário",
+    "ESTOQUE_INICIAL": "Estoque Inicial",
+    "COMPRAR": "Comprar",
+    "VENDER": "Vender",
+    "ESTOQUE": "Estoque",
+    "COMPRAS": "Compras",
+    "VENDAS": "Vendas",
+    "SAIR": "Sair"
+}

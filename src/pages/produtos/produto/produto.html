@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Produto</ion-title>
+    <ion-title>{{ 'PRODUTO' | translate }}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -10,22 +10,22 @@
   </ion-card>
   <ion-list>
     <ion-item>
-      <ion-label floating>Título</ion-label>
+      <ion-label floating>{{ 'TITULO' | translate }}</ion-label>
       <ion-input type="text" value="{{produto.titulo}}"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label floating>Descrição</ion-label>
+      <ion-label floating>{{ 'DESCRICAO' | translate }}</ion-label>
       <ion-input type="text" value="{{produto.descricao}}"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label floating>Valor Unitário</ion-label>
+      <ion-label floating>{{ 'VALOR_UNITARIO' | translate }}</ion-label>
       <ion-input type="text" value="{{produto.valorUnitario | currency:'R$'}}"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label floating>Estoque Inicial</ion-label>
+      <ion-label floating>{{ 'ESTOQUE_INICIAL' | translate }}</ion-label>
       <ion-input type="text" value="{{produto.estoqueInicial}}"></ion-input>
     </ion-item>
   </ion-list>
-  <button ion-button full>Comprar</button>
-  <button ion-button full>Vender</button>
+  <button ion-button full>{{ 'COMPRAR' | translate }}</button>
+  <button ion-button full>{{ 'VENDER' | translate }}</button>
 </ion-content>
