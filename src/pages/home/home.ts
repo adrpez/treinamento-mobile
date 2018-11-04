@@ -5,6 +5,7 @@ import { ProdutosPage } from '../produtos/produtos';
 import { VendasPage } from '../vendas/vendas';
 import { ComprasPage } from '../compras/compras';
 import { LoginPage } from '../login/login';
+import { TranslateService } from '@ngx-translate/core';
 
 /**
  * Generated class for the HomePage page.
@@ -23,13 +24,20 @@ export class HomePage {
   rootPage: any = EstoquePage;
   pages: any[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.pages = [
-      { title: 'Estoque', component: HomePage },
-      { title: 'Produtos', component: ProdutosPage },
-      { title: 'Compras', component: ComprasPage },
-      { title: 'Vendas', component: VendasPage }
-    ];
+  constructor(public navCtrl: NavController, public navParams: NavParams, public translateService: TranslateService) {
+
+
+    translateService.get(['ESTOQUE', 'PRODUTOS', 'COMPRAS', 'VENDAS']).subscribe(
+      values => {
+        this.pages = [
+          { title: values.ESTOQUE, component: HomePage },
+          { title: values.PRODUTOS, component: ProdutosPage },
+          { title: values.COMPRAS, component: ComprasPage },
+          { title: values.VENDAS, component: VendasPage }
+        ];
+      }
+    )
+
   }
 
   ionViewDidLoad() {

@@ -16,12 +16,20 @@ import { ProdutosPage } from '../pages/produtos/produtos';
 import { VendaPage } from '../pages/vendas/venda/venda';
 import { VendasPage } from '../pages/vendas/vendas';
 import { ProdutoService } from '../service/ProdutoService';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { DatabaseService } from '../service/DatabaseService';
 import { SQLite } from '@ionic-native/sqlite';
 /**/import { SQLiteMock } from '../service/SQLiteMock';
 import { FcmProvider } from '../providers/fcm/fcm';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpModule } from '@angular/http';
+import { Globalization } from '@ionic-native/globalization'
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -41,7 +49,15 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+    HttpModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -68,7 +84,8 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     /*SQLite,*/
     { provide: SQLite, useClass: SQLiteMock },
     FcmProvider,
-    BarcodeScanner
+    BarcodeScanner,
+    Globalization
   ]
 })
 export class AppModule {}

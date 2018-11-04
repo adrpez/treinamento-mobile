@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { ProdutoPage } from './produto/produto';
 import { ProdutoService } from '../../service/ProdutoService';
 import { Produto } from '../../model/Produto';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'page-produtos',
@@ -14,7 +15,8 @@ export class ProdutosPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams, 
-    public produtoService: ProdutoService) {
+    public produtoService: ProdutoService,
+    public translate: TranslateService) {
   }
 
   ionViewDidLoad() {
