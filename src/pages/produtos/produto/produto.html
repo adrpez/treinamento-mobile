@@ -10,6 +10,10 @@
   </ion-card>
   <ion-list>
     <ion-item>
+      <ion-label floating>{{ 'CODIGO' | translate }}</ion-label>
+      <ion-input type="text" value="{{produto.id}}" readonly></ion-input>
+    </ion-item>
+    <ion-item>
       <ion-label floating>{{ 'TITULO' | translate }}</ion-label>
       <ion-input type="text" value="{{produto.titulo}}"></ion-input>
     </ion-item>

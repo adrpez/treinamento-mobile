@@ -3,6 +3,7 @@ import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Compra } from '../../../model/Compra';
 import { ProdutoService } from '../../../service/ProdutoService';
+import { CompraService } from '../../../service/CompraService';
 
 @Component({
   selector: 'page-compra',
@@ -16,7 +17,8 @@ export class CompraPage {
     public navParams: NavParams, 
     private barcodeScanner: BarcodeScanner,
     private produtoService: ProdutoService,
-    private toastCtrl: ToastController) {
+    private toastCtrl: ToastController, 
+    public compraService: CompraService) {
     
     this.compra = {
       quantidade: 0,
@@ -32,7 +34,9 @@ export class CompraPage {
   }
 
   ionViewWillEnter() {
-    
+    if (this.navParams) {
+      this.compraService.getById(this.navParams.get("id")).subscribe((compra) => this.compra = compra);
+    }
   }
 
   scanCode(){
@@ -72,6 +76,19 @@ export class CompraPage {
       quantidade = this.compra.quantidade;
     }
     return valorUnitario * quantidade;
+  }
+
+  gravar() {
+    this.compraService.store(this.compra)
+    .subscribe(compra => {
+      this.compra.id = compra.id;
+      const toast = this.toastCtrl.create({
+        message: "Compra gravada com sucesso.",
+        duration: 3000
+      });
+      toast.present();
+      this.navCtrl.pop();
+    });
   }
 
 }

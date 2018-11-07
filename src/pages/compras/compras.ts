@@ -1,22 +1,27 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { CompraPage } from './compra/compra';
+import { CompraService } from '../../service/CompraService';
+import { Compra } from '../../model/Compra';
 
 @Component({
   selector: 'page-compras',
   templateUrl: 'compras.html',
 })
 export class ComprasPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  private compras: Compra[] = [];
+  private valorTotal: number = 0;
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams, public compraService: CompraService) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ComprasPage');
+  ionViewWillEnter() {
+    console.log('ionViewWillEnter ComprasPage');
+    this.compraService.list().subscribe(compras => this.compras = compras)
   }
 
   itemSelected(item) {
-    this.navCtrl.push(CompraPage);
+    this.navCtrl.push(CompraPage, item);
   } 
 
   add() {
