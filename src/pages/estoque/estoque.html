@@ -14,11 +14,11 @@
 <ion-content>
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list>
-    <ion-item>
+    <ion-item *ngFor="let produto of produtosEstoque">
       <ion-avatar item-start>
-        <img src="../../assets/imgs/logo.png">
+        <img src="{{produto.thumbnail}}">
       </ion-avatar>
-      <ion-label *ngFor="let produto of produtosEstoque">
+      <ion-label>
         <h2>{{produto.titulo}}</h2>
         <h3>{{produto.categoria? produto.categoria.titulo: ''}}</h3>
         <p>{{produto.saldo}} {{produto.saldo == 1? 'Unidade': 'Unidades' }}</p>

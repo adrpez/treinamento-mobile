@@ -15,10 +15,19 @@ export class ProdutoEstoque extends Produto {
                     ' Produto.foto,' +
                     ' SUM(Compra.quantidade) as compras,' +
                     ' SUM(Venda.quantidade) as vendas' +
-                ' FROM Produto INNER JOIN Compra' +
+                ' FROM Produto LEFT OUTER JOIN Compra' +
                     ' ON Produto.id = Compra.idProduto' +
-                ' INNER JOIN Venda' +
-                    ' ON Produto.id = Venda.idProduto';
+                ' LEFT OUTER JOIN Venda' +
+                    ' ON Produto.id = Venda.idProduto ' +
+                'GROUP BY Produto.id,' +
+                    ' Produto.titulo,' +
+                    ' Produto.idCategoria,' +
+                    ' Produto.tituloCategoria,' + 
+                    ' Produto.descricao,' +
+                    ' Produto.valorUnitario,' +
+                    ' Produto.estoqueInicial,' +
+                    ' Produto.thumbnail,' +
+                    ' Produto.foto';
     }
 
     static fromDatabase(data: any): ProdutoEstoque {
