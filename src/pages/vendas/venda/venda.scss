@@ -1,9 +1,15 @@
 page-venda {
-    .item-label-stacked [item-right] {
-        margin: 0px;
-        line-height: 3;
-        ion-icon {
-            line-height: 2;
+    ion-item {
+        button {
+            padding: 8px;
+            width: 100%;
+            ion-icon {
+                line-height: 1;
+                display: inline-block;
+            }
+            p {
+                display: inline-block;
+            }
         }
     }
 
@@ -13,5 +19,15 @@ page-venda {
 
     .list-ios > .item-block:last-child, .list-md .item-input:last-child {
         border-bottom: 0;
+    }
+    
+    ion-input[type=number].currency{
+        input:before {
+            content: "$";
+        }
+    }
+
+    .label-left {
+        order: 2;
     }
 }

@@ -7,23 +7,34 @@
   <ion-list>
     <ion-item>
       <ion-label stacked>Código do Produto</ion-label>
-      <ion-input type="text" value=""></ion-input>
-      <button item-right icon-only>
+      <ion-input type="text" [(ngModel)]="venda.produto.id" (blur)="buscarProduto(venda.produto.id)"></ion-input>
+    </ion-item>
+    <ion-item>
+      <button (click)="scanCode()">
+        <p>Ler código de barras</p>
         <ion-icon name="barcode"></ion-icon>
       </button>
     </ion-item>
     <ion-item>
-      <ion-label stacked>Valor Unitário</ion-label>
-      <ion-input type="text" value="R$ 1,00" readonly></ion-input>
+      <ion-label>Produto</ion-label>
+      <ion-label>{{venda.produto.titulo}}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label stacked>Quantidade</ion-label>
-      <ion-input type="text" value=""></ion-input>
+      <ion-label>Data</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="venda.data"></ion-datetime>
     </ion-item>
     <ion-item>
-      <ion-label stacked>Valor Total</ion-label>
-      <ion-input type="text" value="R$ 100,00" readonly></ion-input>
+      <ion-label>Valor Unitário</ion-label>
+      <ion-label text-right>R$ {{venda.produto.valorUnitario}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Quantidade</ion-label>
+      <ion-input text-right type="number" [(ngModel)]="venda.quantidade"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label>Valor Unitário</ion-label>
+        <ion-label text-right>R$ {{venda.produto.valorUnitario * venda.quantidade}}</ion-label>
     </ion-item>
   </ion-list>
-  <button ion-button full>Gravar</button>
+  <button ion-button full (click)="gravar()">Gravar</button>
 </ion-content>

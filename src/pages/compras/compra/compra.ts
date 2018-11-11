@@ -3,6 +3,7 @@ import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Compra } from '../../../model/Compra';
 import { ProdutoService } from '../../../service/ProdutoService';
+import { CompraService } from '../../../service/CompraService';
 
 @Component({
   selector: 'page-compra',
@@ -16,7 +17,8 @@ export class CompraPage {
     public navParams: NavParams, 
     private barcodeScanner: BarcodeScanner,
     private produtoService: ProdutoService,
-    private toastCtrl: ToastController) {
+    private toastCtrl: ToastController, 
+    public compraService: CompraService) {
     
     this.compra = {
       quantidade: 0,
@@ -32,13 +34,15 @@ export class CompraPage {
   }
 
   ionViewWillEnter() {
-    
+    if (this.navParams.get("id")) {
+      this.compraService.getById(this.navParams.get("id")).subscribe((compra) => this.compra = compra);
+    }
   }
 
   scanCode(){
     this.barcodeScanner.scan().then(barcodeData => {
       console.log('Barcode data', barcodeData);
-      if (this.compra.produto.id != ""){
+      if (barcodeData.text != ""){
         this.compra.produto.id = barcodeData.text;
         this.buscarProduto(this.compra.produto.id);
       }
@@ -62,16 +66,17 @@ export class CompraPage {
     });
   }
 
-  valorTotal() {
-    var valorUnitario = 0;
-    var quantidade = 0;
-    if (this.compra.produto.valorUnitario != undefined) {
-      valorUnitario = this.compra.produto.valorUnitario;
-    }
-    if (this.compra.quantidade != undefined) {
-      quantidade = this.compra.quantidade;
-    }
-    return valorUnitario * quantidade;
+  gravar() {
+    this.compraService.store(this.compra)
+    .subscribe(compra => {
+      this.compra.id = compra.id;
+      const toast = this.toastCtrl.create({
+        message: "Compra gravada com sucesso.",
+        duration: 3000
+      });
+      toast.present();
+      this.navCtrl.pop();
+    });
   }
 
 }

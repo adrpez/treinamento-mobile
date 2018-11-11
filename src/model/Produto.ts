@@ -59,6 +59,10 @@ export class Produto {
         return 'DELETE FROM Produto';
     }
 
+    static deleteSql(){
+        return 'DELETE FROM Produto WHERE id=?';
+    }
+
     static listAllSql(){
         return 'SELECT * FROM Produto';
     }

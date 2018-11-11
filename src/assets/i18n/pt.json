@@ -2,6 +2,7 @@
 {
     "PRODUTOS": "Produtos",
     "PRODUTO": "Produto",
+    "CODIGO": "Código",
     "TITULO": "Título",
     "DESCRICAO": "Descrição",
     "VALOR_UNITARIO": "Valor Unitário",

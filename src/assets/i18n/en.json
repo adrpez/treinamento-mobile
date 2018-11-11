@@ -2,6 +2,7 @@
 {
     "PRODUTOS": "Products",
     "PRODUTO": "Product",
+    "CODIGO": "Code",
     "TITULO": "Title",
     "DESCRICAO": "Description",
     "VALOR_UNITARIO": "Unit Price",
