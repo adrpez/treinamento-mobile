@@ -28,6 +28,7 @@ import { HttpModule } from '@angular/http';
 import { Globalization } from '@ionic-native/globalization'
 import { CompraService } from '../service/CompraService';
 import { VendaService } from '../service/VendaService';
+import { EstoqueService } from '../service/EstoqueService';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -84,6 +85,7 @@ export function createTranslateLoader(http: HttpClient) {
     ProdutoService,
     CompraService,
     VendaService,
+    EstoqueService,
     DatabaseService,
     SQLite,
     /*{ provide: SQLite, useClass: SQLiteMock },*/

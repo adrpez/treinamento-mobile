@@ -18,10 +18,10 @@
       <ion-avatar item-start>
         <img src="../../assets/imgs/logo.png">
       </ion-avatar>
-      <ion-label>
-        <h2>Óculos 3D Samsung</h2>
-        <h3>Eletrônicos</h3>
-        <p>100 Unidades</p>
+      <ion-label *ngFor="let produto of produtosEstoque">
+        <h2>{{produto.titulo}}</h2>
+        <h3>{{produto.categoria? produto.categoria.titulo: ''}}</h3>
+        <p>{{produto.saldo}} {{produto.saldo == 1? 'Unidade': 'Unidades' }}</p>
       </ion-label>
     </ion-item>
   </ion-list>

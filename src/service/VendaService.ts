@@ -43,4 +43,9 @@ export class VendaService {
         return this.databaseService.executeSql(Venda.deleteSql(), [id]);
     }
 
+    listByProdutoId(idProduto: string): Observable<Venda[]> {
+        return this.list()
+        .map((vendas) => vendas.filter(venda => venda.produto && venda.produto.id == idProduto));
+    }
+
 }

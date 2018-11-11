@@ -39,6 +39,11 @@ export class CompraService {
         .map((compras) => compras.filter(compras => compras.id == id)[0]);
     }
 
+    listByProdutoId(idProduto: string): Observable<Compra[]> {
+        return this.list()
+        .map((compras) => compras.filter(compra => compra.produto && compra.produto.id == idProduto));
+    }
+
     delete(id: string) {
         return this.databaseService.executeSql(Compra.deleteSql(), [id]);
     }
