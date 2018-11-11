@@ -19,11 +19,11 @@
             <ion-label item-start>
               <h2>{{compra.produto.titulo}}</h2>
               <ion-note>
-                  {{compra.quantidade}} {{compra.quantidade > 1? 'Unidades': 'Unidade' }}
+                  {{compra.quantidade}} {{compra.quantidade == 1? 'Unidade': 'Unidades' }}
               </ion-note>
             </ion-label>
             <ion-label item-end text-right>
-                <h2>R$ {{compra.produto.valorUnitario * compra.quantidade}}</h2>
+                <h2>R$ {{compra.ValorTotal()}}</h2>
             </ion-label>
           </ion-item>
           <ion-item-options side="right">

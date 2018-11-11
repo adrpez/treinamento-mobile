@@ -5,7 +5,7 @@
     </button>
     <ion-title>Vendas</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only>
+      <button ion-button icon-only (click)="add()">
         <ion-icon name="add"></ion-icon>
       </button>
     </ion-buttons>
@@ -14,20 +14,20 @@
 <ion-content>
   <ion-list>
       <ion-list-header>Hoje</ion-list-header>
-      <ion-item-sliding>
-        <ion-item (click)="itemSelected(item)">
+      <ion-item-sliding *ngFor="let venda of vendas">
+        <ion-item (click)="itemSelected(venda)">
           <ion-label item-start>
-            <h2>Óculos 3D Samsung</h2>
+            <h2>{{venda.produto.titulo}}</h2>
             <ion-note>
-                10 Unidades
+                {{venda.quantidade}} {{venda.quantidade == 1? 'Unidade': 'Unidades' }}
             </ion-note>
           </ion-label>
           <ion-label item-end text-right>
-              <h2>R$ 15.000,00</h2>
+              <h2>R$ {{venda.ValorTotal()}}</h2>
           </ion-label>
         </ion-item>
         <ion-item-options side="right">
-          <button ion-button color="danger">
+          <button ion-button color="danger" (click)="remover(venda)">
             <ion-icon name="remove-circle"></ion-icon>
             Remover
           </button>
@@ -37,6 +37,6 @@
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-    <ion-title>Total: R$ 15.000,00</ion-title>
+    <ion-title>Total: R$ {{valorTotal}}</ion-title>
   </ion-toolbar>
 </ion-footer>

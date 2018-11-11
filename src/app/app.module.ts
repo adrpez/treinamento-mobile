@@ -19,7 +19,7 @@ import { ProdutoService } from '../service/ProdutoService';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { DatabaseService } from '../service/DatabaseService';
 import { SQLite } from '@ionic-native/sqlite';
-/**/import { SQLiteMock } from '../service/SQLiteMock';
+/*import { SQLiteMock } from '../service/SQLiteMock';*/
 import { FcmProvider } from '../providers/fcm/fcm';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -27,6 +27,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpModule } from '@angular/http';
 import { Globalization } from '@ionic-native/globalization'
 import { CompraService } from '../service/CompraService';
+import { VendaService } from '../service/VendaService';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -82,9 +83,10 @@ export function createTranslateLoader(http: HttpClient) {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProdutoService,
     CompraService,
+    VendaService,
     DatabaseService,
-    /*SQLite,*/
-    { provide: SQLite, useClass: SQLiteMock },
+    SQLite,
+    /*{ provide: SQLite, useClass: SQLiteMock },*/
     FcmProvider,
     BarcodeScanner,
     Globalization

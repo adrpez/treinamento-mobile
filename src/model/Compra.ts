@@ -1,6 +1,7 @@
 import { Produto } from "./Produto";
 
 export class Compra {
+    
     id: string;
     produto: Produto;
     quantidade: number;
@@ -20,7 +21,7 @@ export class Compra {
     }
 
     static listAllSql(): any {
-        return 'SELECT * FROM Compra';
+        return 'SELECT Compra.id, Compra.quantidade, Compra.data, Compra.idProduto, Produto.valorUnitario, Produto.titulo FROM Compra INNER JOIN Produto ON Compra.idProduto = Produto.id';
     }
 
     static insertSql() : string {
@@ -42,12 +43,20 @@ export class Compra {
             ' WHERE id=?;';
     }
 
+    static deleteSql(): any {
+        return 'DELETE FROM ' + 
+                'Compra ' + 
+            ' WHERE id=?;';
+    }
+
     static fromDatabase(data: any): Compra {
         var compra = new Compra();
         compra.id = data.id;
         if (data.idProduto){
             compra.produto = new Produto();
             compra.produto.id = data.idProduto;
+            compra.produto.valorUnitario = data.valorUnitario;
+            compra.produto.titulo = data.titulo;
         }
         compra.quantidade = data.quantidade;
         compra.data = data.data;
@@ -59,5 +68,17 @@ export class Compra {
                 compra.quantidade,
                 compra.data,
                 compra.id];
+    }
+
+    ValorTotal() {
+        var valorUnitario = 0;
+        var quantidade = 0;
+        if (this.produto.valorUnitario != undefined) {
+            valorUnitario = this.produto.valorUnitario;
+        }
+        if (this.quantidade != undefined) {
+            quantidade = this.quantidade;
+        }
+        return valorUnitario * quantidade;
     }
 }

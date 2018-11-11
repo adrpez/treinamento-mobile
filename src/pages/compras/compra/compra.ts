@@ -34,7 +34,7 @@ export class CompraPage {
   }
 
   ionViewWillEnter() {
-    if (this.navParams) {
+    if (this.navParams.get("id")) {
       this.compraService.getById(this.navParams.get("id")).subscribe((compra) => this.compra = compra);
     }
   }
@@ -42,7 +42,7 @@ export class CompraPage {
   scanCode(){
     this.barcodeScanner.scan().then(barcodeData => {
       console.log('Barcode data', barcodeData);
-      if (this.compra.produto.id != ""){
+      if (barcodeData.text != ""){
         this.compra.produto.id = barcodeData.text;
         this.buscarProduto(this.compra.produto.id);
       }
@@ -64,18 +64,6 @@ export class CompraPage {
         toast.present();
       }
     });
-  }
-
-  valorTotal() {
-    var valorUnitario = 0;
-    var quantidade = 0;
-    if (this.compra.produto.valorUnitario != undefined) {
-      valorUnitario = this.compra.produto.valorUnitario;
-    }
-    if (this.compra.quantidade != undefined) {
-      quantidade = this.compra.quantidade;
-    }
-    return valorUnitario * quantidade;
   }
 
   gravar() {

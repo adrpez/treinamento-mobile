@@ -1,18 +1,15 @@
-import { Produto } from "../model/Produto";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import "rxjs/Rx";
 import { DatabaseService } from "./DatabaseService";
 import { Compra } from "../model/Compra";
 import { Guid } from "guid-typescript";
-import { ProdutoService } from "./ProdutoService";
 
 @Injectable()
 export class CompraService {
     
     constructor(
-        public databaseService: DatabaseService,
-        public produtoService: ProdutoService) { }
+        public databaseService: DatabaseService) { }
 
     list(): Observable<Compra[]> {
         return this.databaseService.executeSql(Compra.listAllSql())
@@ -20,9 +17,6 @@ export class CompraService {
                 let compras:Compra[] = [];
                 for (var i = 0, len = result['rows'].length; i < len; i++){
                     let compra = Compra.fromDatabase(result['rows'].item(i));
-                    if (compra.produto) {
-                        this.produtoService.getById(compra.produto.id).subscribe((produto) => compra.produto = produto)
-                    }
                     compras.push(compra);
                 }
                 return compras;
@@ -46,7 +40,7 @@ export class CompraService {
     }
 
     delete(id: string) {
-        return this.databaseService.executeSql(Produto.deleteSql(), [id]);
+        return this.databaseService.executeSql(Compra.deleteSql(), [id]);
     }
 
 }
