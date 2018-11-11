@@ -32,8 +32,7 @@ export class ProdutoEstoque extends Produto {
 
     static fromDatabase(data: any): ProdutoEstoque {
         let produto = Produto.fromDatabase(data) as ProdutoEstoque;
-        produto.saldo = data.saldo;
-        produto.saldo = 0;
+        produto.saldo = data.estoqueInicial;
         if (data.compras) produto.saldo += data.compras;
         if (data.vendas) produto.saldo -= data.vendas;
         return produto;

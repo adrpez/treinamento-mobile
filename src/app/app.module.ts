@@ -29,6 +29,8 @@ import { Globalization } from '@ionic-native/globalization'
 import { CompraService } from '../service/CompraService';
 import { VendaService } from '../service/VendaService';
 import { EstoqueService } from '../service/EstoqueService';
+import { ChartsModule } from 'ng2-charts';
+import { EstoqueGraficoPage } from '../pages/estoque-grafico/estoque-grafico';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -47,7 +49,8 @@ export function createTranslateLoader(http: HttpClient) {
     ProdutoPage,
     ProdutosPage,
     VendaPage,
-    VendasPage
+    VendasPage,
+    EstoqueGraficoPage
   ],
   imports: [
     BrowserModule,
@@ -60,7 +63,8 @@ export function createTranslateLoader(http: HttpClient) {
         useFactory: (createTranslateLoader),
         deps: [HttpClient]
       }
-    })
+    }),
+    ChartsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -75,7 +79,8 @@ export function createTranslateLoader(http: HttpClient) {
     ProdutoPage,
     ProdutosPage,
     VendaPage,
-    VendasPage
+    VendasPage,
+    EstoqueGraficoPage
   ],
   providers: [
     Firebase,
