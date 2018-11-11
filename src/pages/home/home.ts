@@ -7,13 +7,6 @@ import { ComprasPage } from '../compras/compras';
 import { LoginPage } from '../login/login';
 import { TranslateService } from '@ngx-translate/core';
 
-/**
- * Generated class for the HomePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',

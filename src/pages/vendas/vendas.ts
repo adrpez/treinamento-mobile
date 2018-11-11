@@ -26,8 +26,10 @@ export class VendasPage {
   }
 
   atualizarLista(){
-    this.vendaService.list().subscribe(vendas => this.vendas = vendas)
-    this.atualizarValorTotal();
+    this.vendaService.list().subscribe(vendas => {
+      this.vendas = vendas;
+      this.atualizarValorTotal();
+    });
   }
 
   atualizarValorTotal() {
