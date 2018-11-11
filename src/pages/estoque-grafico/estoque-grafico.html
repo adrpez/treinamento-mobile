@@ -9,5 +9,12 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-  
+    <div style="display: block" *ngIf="isDataAvailable">
+        <canvas baseChart
+                [data]="doughnutChartData"
+                [labels]="doughnutChartLabels"
+                [chartType]="doughnutChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+    </div> 
 </ion-content>

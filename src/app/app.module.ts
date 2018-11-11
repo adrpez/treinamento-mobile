@@ -30,6 +30,7 @@ import { CompraService } from '../service/CompraService';
 import { VendaService } from '../service/VendaService';
 import { EstoqueService } from '../service/EstoqueService';
 import { EstoqueGraficoPage } from '../pages/estoque-grafico/estoque-grafico';
+import { ChartsModule } from 'ng2-charts';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -62,7 +63,8 @@ export function createTranslateLoader(http: HttpClient) {
         useFactory: (createTranslateLoader),
         deps: [HttpClient]
       }
-    })
+    }),
+    ChartsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
