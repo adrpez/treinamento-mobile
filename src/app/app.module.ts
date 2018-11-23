@@ -18,8 +18,8 @@ import { VendasPage } from '../pages/vendas/vendas';
 import { ProdutoService } from '../service/ProdutoService';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { DatabaseService } from '../service/DatabaseService';
-import { SQLite } from '@ionic-native/sqlite';
-/*import { SQLiteMock } from '../service/SQLiteMock';*/
+/*import { SQLite } from '@ionic-native/sqlite';*/
+import { SQLiteMock } from '../service/SQLiteMock';
 import { FcmProvider } from '../providers/fcm/fcm';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -92,8 +92,8 @@ export function createTranslateLoader(http: HttpClient) {
     VendaService,
     EstoqueService,
     DatabaseService,
-    SQLite,
-    /*{ provide: SQLite, useClass: SQLiteMock },*/
+    /*SQLite,*/
+    { provide: SQLite, useClass: SQLiteMock },
     FcmProvider,
     BarcodeScanner,
     Globalization
