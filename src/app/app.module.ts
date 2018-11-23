@@ -18,7 +18,6 @@ import { VendasPage } from '../pages/vendas/vendas';
 import { ProdutoService } from '../service/ProdutoService';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { DatabaseService } from '../service/DatabaseService';
-/*import { SQLite } from '@ionic-native/sqlite';*/
 import { SQLiteMock } from '../service/SQLiteMock';
 import { FcmProvider } from '../providers/fcm/fcm';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
@@ -31,6 +30,7 @@ import { VendaService } from '../service/VendaService';
 import { EstoqueService } from '../service/EstoqueService';
 import { EstoqueGraficoPage } from '../pages/estoque-grafico/estoque-grafico';
 import { ChartsModule } from 'ng2-charts';
+import { SQLite } from '@ionic-native/sqlite';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
